@@ -1,25 +1,12 @@
-div
-  p Hello Pug!
-  button Click Me
+extends default
 
-// <div>
-//   <p>Hello Pug!</p>
-//   <button>Click Me</button>
-// </div>
-
-div.container
-  p#hello Hello Pug!
-  button.btn.btn-blue Click Me
-
-// <div class="container">
-//   <p id="hello">Hello Pug!</p>
-//   <button class="btn btn-blue">Click Me</button>
-// </div>
-
-img(src="fish.png" alt="A big fish")
-
-// <img src="fish.png" alt="A big fish">
-
-p Hello my name is #{name}
-
-// <p>Hello my name is Ayo</p>
+block content
+  div.container
+    each person in people
+      div.person
+        div.person-image(style=`background: url('/images/${person.imgSrc}') top center
+        no-repeat; background-size: cover;`)
+        h2.person-name
+          | #{person.firstname} #{person.lastname}
+        a(href=`/profile?id=${person.id}`)
+          | View Profile
